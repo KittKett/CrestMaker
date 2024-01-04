@@ -20,5 +20,18 @@ namespace CrestMaker
         {
             InitializeComponent();
         }
+
+        private void btnCreateCrest_Click(object sender, RoutedEventArgs e)
+        {
+            txtResponse.Text = "You clicked the button!";
+        }
+
+        //Properties
+
+
+        //Functions
+
+
+
     }
 }
