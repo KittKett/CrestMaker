@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CrestMaker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="400" Width="300">
     <Grid>
+        
+        <TextBlock x:Name="txtTitle" Text="Welome to CrestMaker!" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="25"/>
+
+        <Button x:Name="btnCreateCrest" Content="Create" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"
+                Click="btnCreateCrest_Click"/>
+
+        <TextBlock x:Name="txtResponse"  HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20"/>
+
+
 
     </Grid>
 </Window>
