@@ -8,4 +8,18 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="DanielJackson.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="sampleImages\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="DanielJackson.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
 </Project>

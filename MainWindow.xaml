@@ -15,7 +15,7 @@
 
         <TextBlock x:Name="txtResponse"  HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20"/>
 
-
+        <Image Name="imgTest" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="100"/>
 
     </Grid>
 </Window>
