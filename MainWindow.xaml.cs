@@ -21,17 +21,32 @@ namespace CrestMaker
             InitializeComponent();
         }
 
-        private void btnCreateCrest_Click(object sender, RoutedEventArgs e)
-        {
-            txtResponse.Text = "You clicked the button!";
-        }
-
         //Properties
+
+        List<string> colors = new List<string> { "Blue", "Red", "Green", "Black", "White", "Purple", "Orange", "Yellow"};
+
+        string output;
 
 
         //Functions
+        private void btnCreateCrest_Click(object sender, RoutedEventArgs e)
+        {
+            //picking your colors
+            List<string> chooseColors = colors;
+            Random rand = new Random();
+            int randomInt = rand.Next(chooseColors.Count);
+            string crestPrimaryColor = chooseColors[randomInt];
+            chooseColors.RemoveAt(randomInt);
+            randomInt = rand.Next(chooseColors.Count);
+            string crestSecondaryColor = chooseColors[randomInt];
+            colors.RemoveAt(randomInt);
 
+            
 
+            //text output
+            output = "Your crest will be " + crestPrimaryColor + " and " + crestSecondaryColor +  ".";
+            txtResponse.Text = output;
+        }
 
     }
 }
