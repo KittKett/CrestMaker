@@ -26,17 +26,21 @@ namespace CrestMaker
             //make temp lists to choose from
             List<string> chooseYourColors = colors;
             List<string> chooseYourSymbol = symbols;
+            List<string> chooseYourPattern = patterns;
 
             //make your selections
-            string crestPrimaryColor = giveMeSomethingToWorkWith(chooseYourColors).ToLower();
+            string crestPrimaryColor = giveMeSomethingToWorkWith(chooseYourColors);
             chooseYourColors.Remove(crestPrimaryColor);
-            string crestSecondaryColor = giveMeSomethingToWorkWith(chooseYourColors).ToLower();
-
+            string crestSecondaryColor = giveMeSomethingToWorkWith(chooseYourColors);
             string crestSymbol = giveMeSomethingToWorkWith(chooseYourSymbol);
+            string crestPattern = giveMeSomethingToWorkWith(chooseYourPattern);
+
 
             //text output
-            output = "Your crest will be " + crestPrimaryColor + " and " + crestSecondaryColor +
-                ", and proudly feature the symbol of the " + crestSymbol + ".";
+            output = "Your crest will be mostly " + crestPrimaryColor + " with accents of " + crestSecondaryColor +
+                ".  It will proudly feature the symbol of the " + crestSymbol + " and be surrounded by " +
+                "a background of " + crestPattern + ".";
+
             txtResponse.Text = output;
         }
 
@@ -96,9 +100,24 @@ namespace CrestMaker
             "Sword",
             "Stars",
             "Sun",
-            "Waves"
+            "Waves",
+            "Wings"
         };
 
+
+        List<string> patterns = new List<string>
+        {
+            "Stars",
+            "Fluer-des-lis",
+            "Sunrays",
+            "Waterdrops",
+            "Diagonal Stripes",
+            "Stitching",
+            "Dots",
+            "Horizontal Stripes",
+            "Vertical Stripes",
+            "Hatchwork"
+        };
 
         #endregion
 
