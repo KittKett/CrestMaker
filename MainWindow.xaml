@@ -5,15 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CrestMaker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="300">
+        Title="CrestMaker v0" Height="650" Width="400">
     <Grid>
-        
-        <TextBlock x:Name="txtTitle" Text="Welome to CrestMaker!" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="25"/>
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="BlanchedAlmond" Offset="0"/>
+                <GradientStop Color="#FFDFC192" Offset="0.991"/>
+            </RadialGradientBrush>
+        </Grid.Background>
 
-        <Button x:Name="btnCreateCrest" Content="Create" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"
-                Click="btnCreateCrest_Click"/>
+        <TextBlock x:Name="txtTitle" Text="Welome to CrestMaker!" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                   FontSize="30" Margin="0,10,0,0" FontFamily="Georgia" FontWeight="Bold" Foreground="#FF433621"/>
 
-        <TextBlock x:Name="txtResponse"  HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20"/>
+        <TextBlock x:Name="txtSubtitle" Text="Press the button to get started" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                   FontSize="15" Margin="0,50,0,0" FontFamily="Arial" Foreground="#FF433621" />
+
+        <Button x:Name="btnCreateCrest" Content="Create my crest" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="17"
+                Click="btnCreateCrest_Click" Width="200" Height="30" FontFamily="Georgia" FontWeight="Bold" Margin="0,90,0,0"
+                Background="#FF433621" Foreground="BlanchedAlmond" BorderBrush="#FF433621"/>
+
+
+        <Border HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,150,0,0" Width="250" Height="250" BorderBrush="#FF433621" BorderThickness="2"
+                Background="BurlyWood">
+
+            <TextBlock FontSize="17" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Margin="10"
+                       Foreground="#FF433621" FontFamily="Arial" Text="img"/>
+
+        </Border>
+
+        <Border HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,425,0,0" Width="300" Height="175" BorderBrush="#FF433621" BorderThickness="2"
+                Background="BurlyWood">
+            
+            <TextBlock x:Name="txtResponse" FontSize="17" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Margin="10"
+                       Foreground="#FF433621" FontFamily="Arial"/>
+
+        </Border>
+
 
 
 
