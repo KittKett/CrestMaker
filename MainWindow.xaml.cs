@@ -6,9 +6,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CrestMaker
 {
@@ -17,6 +15,10 @@ namespace CrestMaker
     /// </summary>
     public partial class MainWindow : Window
     {
+        string newImageId;
+        string documentsFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        string path = "/CrestMaker/Outputs/Images";
+
         public MainWindow()
         {
             InitializeComponent();
@@ -24,37 +26,22 @@ namespace CrestMaker
 
         private void btnCreateCrest_Click(object sender, RoutedEventArgs e)
         {
-            // Create Image Element
-            //Image myImage = new Image();
-            //myImage.Width = 200;
+            ImageProcessor processor = new ImageProcessor();
+            FileUtils fileUtils = new FileUtils();
 
-            // Create source
-            BitmapImage myBitmapImage = new BitmapImage();
+            newImageId = Guid.NewGuid().ToString();
 
-            // BitmapImage.UriSource must be in a BeginInit/EndInit block
-            myBitmapImage.BeginInit();
-            
-            myBitmapImage.UriSource = new Uri("DanielJackson.jpg", UriKind.Relative);
+            fileUtils.SetupOutputDirectory(documentsFolderPath + path);
 
-            // To save significant application memory, set the DecodePixelWidth or
-            // DecodePixelHeight of the BitmapImage value of the image source to the desired
-            // height or width of the rendered image. If you don't do this, the application will
-            // cache the image as though it were rendered as its normal size rather than just
-            // the size that is displayed.
-            // Note: In order to preserve aspect ratio, set DecodePixelWidth
-            // or DecodePixelHeight but not both.
-            myBitmapImage.DecodePixelWidth = 200;
-            myBitmapImage.EndInit();
-            //set image source
-            //myImage.Source = myBitmapImage;
-            imgTest.Source = myBitmapImage;
+            processor.GenerateCrestImage(documentsFolderPath + path, newImageId);
+            imgTest.Source = processor.RetrieveCrestImage(documentsFolderPath + path, newImageId);
         }
 
         //Properties
 
 
         //Functions
-
+        
 
 
     }
