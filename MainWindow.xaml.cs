@@ -21,32 +21,86 @@ namespace CrestMaker
             InitializeComponent();
         }
 
-        //Properties
-
-        List<string> colors = new List<string> { "Blue", "Red", "Green", "Black", "White", "Purple", "Orange", "Yellow"};
-
-        string output;
-
-
-        //Functions
         private void btnCreateCrest_Click(object sender, RoutedEventArgs e)
         {
-            //picking your colors
-            List<string> chooseColors = colors;
-            Random rand = new Random();
-            int randomInt = rand.Next(chooseColors.Count);
-            string crestPrimaryColor = chooseColors[randomInt];
-            chooseColors.RemoveAt(randomInt);
-            randomInt = rand.Next(chooseColors.Count);
-            string crestSecondaryColor = chooseColors[randomInt];
-            colors.RemoveAt(randomInt);
+            //make temp lists to choose from
+            List<string> chooseYourColors = colors;
+            List<string> chooseYourSymbol = symbols;
 
-            
+            //make your selections
+            string crestPrimaryColor = giveMeSomethingToWorkWith(chooseYourColors).ToLower();
+            chooseYourColors.Remove(crestPrimaryColor);
+            string crestSecondaryColor = giveMeSomethingToWorkWith(chooseYourColors).ToLower();
+
+            string crestSymbol = giveMeSomethingToWorkWith(chooseYourSymbol);
 
             //text output
-            output = "Your crest will be " + crestPrimaryColor + " and " + crestSecondaryColor +  ".";
+            output = "Your crest will be " + crestPrimaryColor + " and " + crestSecondaryColor +
+                ", and proudly feature the symbol of the " + crestSymbol + ".";
             txtResponse.Text = output;
         }
+
+
+        /// <summary>
+        /// Returns a random list item as a string using provided list "choices"
+        /// </summary>
+        /// <param name="choices"></param>
+        /// <returns></returns>
+        private string giveMeSomethingToWorkWith(List<string> choices)
+        {
+            Random rand = new Random();
+            int randomInt = rand.Next(choices.Count);
+
+            return choices[randomInt];
+        }
+
+
+
+        #region PROPERTIES
+
+        string output;
+        
+        List<string> colors = new List<string>
+        {
+            "Blue",
+            "Red",
+            "Green",
+            "Black",
+            "White",
+            "Purple",
+            "Orange",
+            "Yellow",
+            "Gold",
+            "Silver",
+            "Mauve",
+            "Grey",
+            "Maroon",
+            "Navy",
+            "Mustard"
+        };
+
+        List<string> symbols = new List<string>
+        {
+            "Lion",
+            "Bear",
+            "Snake",
+            "Squirrel",
+            "Griffin",
+            "Dragon",
+            "Rose",
+            "Crown",
+            "Cross",
+            "Bumblebee",
+            "Warthog",
+            "Maiden",
+            "Sword",
+            "Stars",
+            "Sun",
+            "Waves"
+        };
+
+
+        #endregion
 
     }
 }
