@@ -28,8 +28,8 @@
         <Border HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,150,0,0" Width="250" Height="250" BorderBrush="#FF433621" BorderThickness="2"
                 Background="BurlyWood">
 
-            <TextBlock FontSize="17" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Margin="10"
-                       Foreground="#FF433621" FontFamily="Arial" Text="img"/>
+            <Image Name="imgTest" Source="BaseImages/default.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="100"/>
+
 
         </Border>
 
@@ -40,8 +40,6 @@
                        Foreground="#FF433621" FontFamily="Arial"/>
 
         </Border>
-
-
 
 
     </Grid>
