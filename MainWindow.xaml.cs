@@ -1,13 +1,12 @@
-﻿using System.Text;
+﻿using Microsoft.Win32;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CrestMaker
 {
@@ -16,6 +15,10 @@ namespace CrestMaker
     /// </summary>
     public partial class MainWindow : Window
     {
+        string newImageId;
+        string documentsFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        string path = "/CrestMaker/Outputs/Images";
+
         public MainWindow()
         {
             InitializeComponent();
@@ -23,6 +26,16 @@ namespace CrestMaker
 
         private void btnCreateCrest_Click(object sender, RoutedEventArgs e)
         {
+            //pull in utility classes
+            ImageProcessor processor = new ImageProcessor();
+            FileUtils fileUtils = new FileUtils();
+            
+            //ensure filesystem is setup correctly
+            fileUtils.SetupOutputDirectory(documentsFolderPath + path);
+            
+            //create a unique identifier for the output content
+            newImageId = Guid.NewGuid().ToString();
+            
             //make temp lists to choose from
             List<string> chooseYourColors = colors;
             List<string> chooseYourSymbol = symbols;
@@ -34,7 +47,9 @@ namespace CrestMaker
             string crestSecondaryColor = giveMeSomethingToWorkWith(chooseYourColors);
             string crestSymbol = giveMeSomethingToWorkWith(chooseYourSymbol);
             string crestPattern = giveMeSomethingToWorkWith(chooseYourPattern);
-
+            
+            //generate image
+            processor.GenerateCrestImage(documentsFolderPath + path, newImageId);
 
             //text output
             output = "Your crest will be mostly " + crestPrimaryColor + " with accents of " + crestSecondaryColor +
@@ -42,6 +57,7 @@ namespace CrestMaker
                 "a background of " + crestPattern + ".";
 
             txtResponse.Text = output;
+            imgTest.Source = processor.RetrieveCrestImage(documentsFolderPath + path, newImageId);
         }
 
 
@@ -57,8 +73,6 @@ namespace CrestMaker
 
             return choices[randomInt];
         }
-
-
 
         #region PROPERTIES
 

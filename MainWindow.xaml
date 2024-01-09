@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="CrestMaker v0" Height="400" Width="300">
     <Grid>
-        
+
         <TextBlock x:Name="txtTitle" Text="Welome to CrestMaker!" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="25"/>
 
         <Button x:Name="btnCreateCrest" Content="Create" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"
@@ -16,7 +16,7 @@
         <TextBlock x:Name="txtResponse"  HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20" MaxWidth="290"
                    TextWrapping="Wrap" TextAlignment="Center"/>
 
-
+        <Image Name="imgTest" Source="BaseImages/default.png" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="100"/>
 
     </Grid>
 </Window>
