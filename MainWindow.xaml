@@ -5,39 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CrestMaker"
         mc:Ignorable="d"
-        Title="CrestMaker v0" Height="650" Width="400">
+        Title="CrestMaker v0" Height="600" Width="400">
     <Grid>
         <Grid.Background>
             <RadialGradientBrush>
-                <GradientStop Color="BlanchedAlmond" Offset="0"/>
-                <GradientStop Color="#FFDFC192" Offset="0.991"/>
+                <GradientStop Color="LightYellow" Offset="1"/>
+                <GradientStop Color="White" Offset="0"/>
             </RadialGradientBrush>
         </Grid.Background>
 
         <TextBlock x:Name="txtTitle" Text="Welome to CrestMaker!" HorizontalAlignment="Center" VerticalAlignment="Top" 
-                   FontSize="30" Margin="0,10,0,0" FontFamily="Georgia" FontWeight="Bold" Foreground="#FF433621"/>
+                   FontSize="35" Margin="0,10,0,0" FontFamily="Old English Text MT" FontWeight="Normal" Foreground="#FF254C6C"/>
 
-        <TextBlock x:Name="txtSubtitle" Text="Press the button to get started" HorizontalAlignment="Center" VerticalAlignment="Top" 
-                   FontSize="15" Margin="0,50,0,0" FontFamily="Arial" Foreground="#FF433621" />
+        <Button x:Name="btnCreateCrest" Content="Generate My Crest" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20"
+                Click="btnCreateCrest_Click" Width="200" Height="30" FontFamily="Centaur" FontWeight="Bold" Margin="0,65,0,0"
+                Background="SteelBlue" Foreground="LightYellow" BorderBrush="#FF254C6C"/>
 
-        <Button x:Name="btnCreateCrest" Content="Create my crest" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="17"
-                Click="btnCreateCrest_Click" Width="200" Height="30" FontFamily="Georgia" FontWeight="Bold" Margin="0,90,0,0"
-                Background="#FF433621" Foreground="BlanchedAlmond" BorderBrush="#FF433621"/>
+        <Border HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,110,0,0" Width="250" Height="250" BorderBrush="#FF254C6C" BorderThickness="2"
+                Background="Transparent">
 
-
-        <Border HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,150,0,0" Width="250" Height="250" BorderBrush="#FF433621" BorderThickness="2"
-                Background="BurlyWood">
-
-            <Image Name="imgTest" Source="BaseImages/default.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="100"/>
-
+            <Image Name="imgTest" Source="BaseImages/default.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="250"/>
 
         </Border>
 
-        <Border HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,425,0,0" Width="300" Height="175" BorderBrush="#FF433621" BorderThickness="2"
-                Background="BurlyWood">
-            
-            <TextBlock x:Name="txtResponse" FontSize="17" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Margin="10"
-                       Foreground="#FF433621" FontFamily="Arial"/>
+        <Border HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,380,0,0" Width="300" Height="175" BorderBrush="#FF254C6C" BorderThickness="2"
+                Background="LightSteelBlue">
+
+            <TextBlock x:Name="txtResponse" FontSize="20" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Margin="10"
+                       Foreground="#FF254C6C" FontFamily="Centaur"/>
 
         </Border>
 
