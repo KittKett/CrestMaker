@@ -21,14 +21,18 @@
                 Click="btnCreateCrest_Click" Width="200" Height="30" FontFamily="Centaur" FontWeight="Bold" Margin="0,65,0,0"
                 Background="SteelBlue" Foreground="LightYellow" BorderBrush="#FF254C6C"/>
 
-        <Border HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,110,0,0" Width="250" Height="250" BorderBrush="#FF254C6C" BorderThickness="2"
+        <CheckBox x:Name = "checkImageGenerator" Content = "Generate Crest Image" HorizontalAlignment="Center"
+         Margin = "0,105,0,0" VerticalAlignment = "Top" Checked = "HandleCheckImageGenerator" Unchecked = "HandleUncheckedImageGenerator" Width = "150"
+                   Foreground="#FF254C6C"/>
+
+        <Border HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,125,0,0" Width="250" Height="250" BorderBrush="#FF254C6C" BorderThickness="2"
                 Background="Transparent">
 
             <Image Name="imgTest" Source="BaseImages/default.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="250"/>
 
         </Border>
 
-        <Border HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,380,0,0" Width="300" Height="175" BorderBrush="#FF254C6C" BorderThickness="2"
+        <Border HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,390,0,0" Width="300" Height="175" BorderBrush="#FF254C6C" BorderThickness="2"
                 Background="LightSteelBlue">
 
             <TextBlock x:Name="txtResponse" FontSize="20" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Margin="10"
