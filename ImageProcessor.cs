@@ -21,19 +21,12 @@ namespace CrestMaker
         /// </summary>
         public void GenerateCrestImage(string basepath, string guid)
         {
-            Image imageBackground = Image.FromFile("BaseImages/Background.png");
-            Image imageOverlay = Image.FromFile("BaseImages/Overlay-2.png");
-
-            Image coloredBackground = ChangeNonAlphaColor(imageBackground, Color.Blue);
-
             Image img = new Bitmap(1024, 1024);
-            using (Graphics gr = Graphics.FromImage(img))
-            {
 
-                //gr.DrawImage(imageBackground, new Point(0, 0));
-                gr.DrawImageUnscaled(coloredBackground, 0, 0, img.Width, img.Height);
-                gr.DrawImageUnscaled(imageOverlay, 0, 0, img.Width, img.Height);
-            }
+            applyLayer("BaseImages/Background.png", Color.Red, img);
+            applyLayer("BaseImages/DiagonalStripe-2.png", Color.Blue, img);
+            applyLayer("BaseImages/Fleur-De-Lis.png", Color.Gold, img);
+            applyLayer("BaseImages/ExteriorRim.png", img);
 
             img.Save(basepath + "/" + guid + ".png", ImageFormat.Png);
             img.Dispose();
@@ -56,6 +49,24 @@ namespace CrestMaker
         }
 
         /// <summary>
+        /// This funtion pulls the template image, colors it and draws the image as a layer on the final image
+        /// </summary>
+        private void applyLayer(string templateImagePath, Color newColor, Image img)
+        {
+            Image templateImage = Image.FromFile(templateImagePath);
+            Image coloredImage = ChangeNonAlphaColor(templateImage, newColor);
+            Graphics.FromImage(img).DrawImageUnscaled(coloredImage, 0, 0, img.Width, img.Height);
+        }
+        /// <summary>
+        /// This funtion pulls the template image and draws the image as a layer on the final image
+        /// </summary>
+        private void applyLayer(string templateImagePath, Image img)
+        {
+            Image templateImage = Image.FromFile(templateImagePath);
+            Graphics.FromImage(img).DrawImageUnscaled(templateImage, 0, 0, img.Width, img.Height);
+        }
+
+        /// <summary>
         /// This funtion changes the white pixels of any image to a custom color
         /// </summary>
         private Image ChangeNonAlphaColor(Image img, Color color)
@@ -66,9 +77,9 @@ namespace CrestMaker
                 for (int y = 0; y < bmp.Height; y++)
                 {
                     Color currentColor = bmp.GetPixel(x, y);
-                    //Check if the pixel is not clear, and if all of the RGB values are 255 (white)
+                    //Check if the pixel is not clear, and not black (0)
                     //This will keep any black outlines in the layer
-                    if (currentColor.A != 0 && currentColor.R == 255 && currentColor.G == 255 && currentColor.B == 255)
+                    if (currentColor.A != 0 && currentColor.R != 0 && currentColor.G != 0 && currentColor.B != 0)
                     {
                         bmp.SetPixel(x, y, color);
                     }

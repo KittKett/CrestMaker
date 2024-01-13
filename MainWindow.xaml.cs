@@ -18,6 +18,11 @@ namespace CrestMaker
         string newImageId;
         string documentsFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         string path = "/CrestMaker/Outputs/Images";
+        bool enableImageGenerator = false;
+
+        //pull in utility classes
+        ImageProcessor processor = new ImageProcessor();
+        FileUtils fileUtils = new FileUtils();
 
         public MainWindow()
         {
@@ -26,15 +31,13 @@ namespace CrestMaker
 
         private void btnCreateCrest_Click(object sender, RoutedEventArgs e)
         {
-            //pull in utility classes
-            ImageProcessor processor = new ImageProcessor();
-            FileUtils fileUtils = new FileUtils();
-            
-            //ensure filesystem is setup correctly
-            fileUtils.SetupOutputDirectory(documentsFolderPath + path);
-            
-            //create a unique identifier for the output content
-            newImageId = Guid.NewGuid().ToString();
+            if (enableImageGenerator)
+            {
+                //ensure filesystem is setup correctly
+                fileUtils.SetupOutputDirectory(documentsFolderPath + path);
+                //create a unique identifier for the output content
+                newImageId = Guid.NewGuid().ToString();
+            }
             
             //make temp lists to choose from
             List<string> chooseYourColors = colors;
@@ -48,16 +51,35 @@ namespace CrestMaker
             string crestSymbol = giveMeSomethingToWorkWith(chooseYourSymbol);
             string crestPattern = giveMeSomethingToWorkWith(chooseYourPattern);
             
-            //generate image
-            processor.GenerateCrestImage(documentsFolderPath + path, newImageId);
-
+            if (enableImageGenerator)
+            {
+                //generate image
+                processor.GenerateCrestImage(documentsFolderPath + path, newImageId);
+            }
+            
             //text output
             output = "Your crest will be mostly " + crestPrimaryColor + " with accents of " + crestSecondaryColor +
                 ".  It will proudly feature the symbol of the " + crestSymbol + " and be surrounded by " +
                 "a background of " + crestPattern + ".";
 
             txtResponse.Text = output;
-            imgTest.Source = processor.RetrieveCrestImage(documentsFolderPath + path, newImageId);
+            
+            if (enableImageGenerator)
+            {
+                imgTest.Source = processor.RetrieveCrestImage(documentsFolderPath + path, newImageId);
+            }
+
+
+        }
+
+        public void HandleCheckImageGenerator(object sender, RoutedEventArgs e)
+        {
+            enableImageGenerator = true;
+        }
+
+        public void HandleUncheckedImageGenerator(object sender, RoutedEventArgs e)
+        {
+            enableImageGenerator = false;
         }
 
 
