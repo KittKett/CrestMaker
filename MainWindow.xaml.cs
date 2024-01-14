@@ -27,16 +27,17 @@ namespace CrestMaker
         public MainWindow()
         {
             InitializeComponent();
+
+            //Setup project in user files
+            fileUtils.SetupProjectDirectories(documentsFolderPath + "/CrestMaker/Templates");
+            //ensure output filesystem is setup correctly
+            fileUtils.SetupOutputDirectory(documentsFolderPath + outputPath);
         }
 
         private void btnCreateCrest_Click(object sender, RoutedEventArgs e)
         {
             if (enableImageGenerator)
-            {
-                //Setup project in user files
-                fileUtils.SetupProjectDirectories(documentsFolderPath + "/CrestMaker/Templates");
-                //ensure output filesystem is setup correctly
-                fileUtils.SetupOutputDirectory(documentsFolderPath + outputPath);
+            { 
                 //create a unique identifier for the output content
                 newImageId = Guid.NewGuid().ToString();
             }
