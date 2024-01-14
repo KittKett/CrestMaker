@@ -28,7 +28,7 @@
         <Border HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,125,0,0" Width="250" Height="250" BorderBrush="#FF254C6C" BorderThickness="2"
                 Background="Transparent">
 
-            <Image Name="imgTest" Source="BaseImages/default.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="250"/>
+            <Image Name="imgTest" Source="Templates/default.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="250"/>
 
         </Border>
 
