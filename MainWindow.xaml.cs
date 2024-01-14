@@ -17,7 +17,7 @@ namespace CrestMaker
     {
         string newImageId;
         string documentsFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        string path = "/CrestMaker/Outputs/Images";
+        string outputPath = "/CrestMaker/Outputs/Images";
         bool enableImageGenerator = false;
 
         //pull in utility classes
@@ -33,8 +33,10 @@ namespace CrestMaker
         {
             if (enableImageGenerator)
             {
-                //ensure filesystem is setup correctly
-                fileUtils.SetupOutputDirectory(documentsFolderPath + path);
+                //Setup project in user files
+                fileUtils.SetupProjectDirectories(documentsFolderPath + "/CrestMaker/Templates");
+                //ensure output filesystem is setup correctly
+                fileUtils.SetupOutputDirectory(documentsFolderPath + outputPath);
                 //create a unique identifier for the output content
                 newImageId = Guid.NewGuid().ToString();
             }
@@ -54,7 +56,7 @@ namespace CrestMaker
             if (enableImageGenerator)
             {
                 //generate image
-                processor.GenerateCrestImage(documentsFolderPath + path, newImageId);
+                processor.GenerateCrestImage(documentsFolderPath, outputPath, newImageId);
             }
             
             //text output
@@ -66,7 +68,7 @@ namespace CrestMaker
             
             if (enableImageGenerator)
             {
-                imgTest.Source = processor.RetrieveCrestImage(documentsFolderPath + path, newImageId);
+                imgTest.Source = processor.RetrieveCrestImage(documentsFolderPath + outputPath, newImageId);
             }
 
 
@@ -80,6 +82,7 @@ namespace CrestMaker
         public void HandleUncheckedImageGenerator(object sender, RoutedEventArgs e)
         {
             enableImageGenerator = false;
+            imgTest.Source = processor.RetrieveCrestImage(documentsFolderPath+ "/CrestMaker/Templates", "default");
         }
 
 

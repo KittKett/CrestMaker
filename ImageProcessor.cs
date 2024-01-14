@@ -19,16 +19,16 @@ namespace CrestMaker
         /// <summary>
         /// This funtion is where the image processing takes place to pull and combine multiple images and colors together to make a crest image
         /// </summary>
-        public void GenerateCrestImage(string basepath, string guid)
+        public void GenerateCrestImage(string basepath, string outputPath, string guid)
         {
             Image img = new Bitmap(1024, 1024);
 
-            applyLayer("BaseImages/Background.png", Color.Red, img);
-            applyLayer("BaseImages/DiagonalStripe-2.png", Color.Blue, img);
-            applyLayer("BaseImages/Fleur-De-Lis.png", Color.Gold, img);
-            applyLayer("BaseImages/ExteriorRim.png", img);
+            applyLayer(basepath + "/CrestMaker/Templates/Backgrounds/Background.png", Color.Red, img);
+            applyLayer(basepath + "/CrestMaker/Templates/Patterns/DiagonalStripe-2.png", Color.Blue, img);
+            applyLayer(basepath + "/CrestMaker/Templates/Symbols/Fleur-De-Lis.png", Color.Gold, img);
+            applyLayer(basepath + "/CrestMaker/Templates/Backgrounds/ExteriorRim.png", img);
 
-            img.Save(basepath + "/" + guid + ".png", ImageFormat.Png);
+            img.Save(basepath + outputPath + "/" + guid + ".png", ImageFormat.Png);
             img.Dispose();
         }
 
